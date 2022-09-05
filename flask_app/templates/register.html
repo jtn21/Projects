@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container mx-auto w-50">
+        <div class = text-center>
+            <h1>Register</h1>
+        </div>
+        <a href="/login">Login</a>
+            <form action="/register/submit" method="POST">
+                <div class="firstname">
+                    <label>
+                        First Name:
+                    </label>
+                    <input type="text" id="first_name" name="first_name" class="form-control" />
+                    </p>
+                    {% for message in get_flashed_messages( category_filter = ["error_register_first_name"] ) %}
+                    <p class="alert alert-danger">
+                        {{ message }}
+                    </p>
+                    {% endfor %}
+                    {% for message in get_flashed_messages( category_filter = ["error_register_first_name_two"] ) %}
+                    <p class="alert alert-danger">
+                        {{ message }}
+                    </p>
+                    {% endfor %}
+                </div>
+                <div class="lastname">
+                    <label>
+                        Last Name:
+                    </label>
+                    <input type="text" id="last_name" name="last_name" class="form-control" />
+                    {% for message in get_flashed_messages( category_filter = ["error_register_last_name"] ) %}
+                    <p class="alert alert-danger">
+                        {{ message }}
+                    </p>
+                    {% endfor %}
+                    {% for message in get_flashed_messages( category_filter = ["error_register_last_name_two"] ) %}
+                    <p class="alert alert-danger">
+                        {{ message }}
+                    {% endfor %}
+                    </p>
+                </div>
+                <div class="email">
+                    <label>
+                        Email:
+                    </label>
+                    <input type="text" id="email" name="email" class="form-control" />
+                    {% for message in get_flashed_messages( category_filter = ["error_register_email"] ) %}
+                    <p class="alert alert-danger">
+                        {{ message }}
+                    </p>
+                    {% endfor %}
+                    {% for message in get_flashed_messages( category_filter = ["error_invalid_email"] ) %}
+                    <p class="alert alert-danger">
+                        {{ message }}
+                    </p>
+                    {% endfor %}
+                </div>
+                <div class="password">
+                    <label>
+                        Password:
+                    </label>
+                    <input type="password" id="password" name="password" class="form-control" />
+                    {% for message in get_flashed_messages( category_filter = ["error_register_password"] ) %}
+                    <p class="alert alert-danger">
+                        {{ message }}
+                    </p>
+                    {% endfor %}
+                </div>
+                <div class="confirm_password">
+                    <label>
+                        Confirm Password:
+                    </label>
+                    <input type="password" id="confirm_password" name="confirm_password" class="form-control" />
+                    {% for message in get_flashed_messages( category_filter = ["error_register_password_confirmation"] ) %}
+                    <p class="alert alert-danger">
+                        {{ message }}
+                    </p>
+                    {% endfor %}
+                </div>
+                <div>
+                    <button class="btn btn-danger mt-3" type="submit">
+                        Register
+                    </button>
+                </div>
+            </form>
+    </div> 
+
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</body>
+</html>
