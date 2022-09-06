@@ -5,18 +5,18 @@ from flask import flash
 class Review:
     def __init__(self, data) :
         self.id = data['id']
-        self.created_at = ['created_at']
-        self.updated_at = ['updated_at']
-        self.user_id = ['user_id']
-        self.artist_id = ['artist_id']
-        self.review = data ['review']
-        self.num_stars = ['num_stars']
+        self.created_at = data['created_at']
+        self.updated_at = data['updated_at']
+        self.user_id = data['user_id']
+        self.artist_id = data['artist_id']
+        self.review = data['review']
+        self.num_stars = data['num_stars']
 
     
     @classmethod
     def create( cls, data ):
-        query = "INSERT INTO reviews( created_at, updated_at, user_id, artist_id, review, num_stars ) "
-        query += "VALUES( %(created_at)s, %(updated_at)s, %(user_id)s, %(artist_id)s, %(review)s, %(num_stars)s );"
+        query = "INSERT INTO reviews (user_id, review, num_stars ) "
+        query += "VALUES ( %(user_id)s,  %(review)s, %(num_stars)s ) ;"
 
         return connectToMySQL( DATABASE).query_db( query, data)
 
@@ -63,7 +63,7 @@ class Review:
         return connectToMySQL(DATABASE).query_db(query,data)
 
     @staticmethod
-    def validate_create(data):
+    def validate_create_review(data):
         isValid = True
         if data['review'] == "":
             isValid = False

@@ -10,10 +10,22 @@
     <h1>
         Welcome {{session[ 'first_name' ] }}
     </h1>
-
     <div>
         <a href= "/add/review"> Add a review</a>
         <a href = "/logout"> Logout</a>
+    </div>
+    <div>
+        <table>
+            <tr>
+                <th>Review</th>
+                <th>Rating</th>
+            </tr>
+            <tr> {% for review in reviews: %} </tr>
+                <td> {{review.review}} </td>
+                <td> {{review.rating}} </td>
+                <td> <h6>Actions</h6></td>
+                {% endfor %}
+        </table>
     </div>
 </body>
 </html>

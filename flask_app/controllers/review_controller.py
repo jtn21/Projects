@@ -25,10 +25,12 @@ def display_review():
 # create a review
 @app.route("/review/new", methods = [ 'POST'] )
 def create_review():
-    if Review.validate_create(request.form) == False:
+    if Review.validate_create_review(request.form) == False:
         return redirect ("/dashboard")
     else:
         data = {
+            "user_id": session['user_id'],
+            "artist_id": request.form['artist_id'],
             "review" : request.form[ 'review' ],
             "num_stars" : request.form ['num_stars']
         }

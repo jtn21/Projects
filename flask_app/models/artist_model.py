@@ -1,5 +1,6 @@
 from flask_app.config.mysqlconnection import connectToMySQL
 from flask_app import DATABASE
+from flask import flash
 
 class Artist:
     def __init__(self, data) :
@@ -28,3 +29,12 @@ class Artist:
             for artist in result:
                 artists.append(artist)
         return artists
+
+
+    @staticmethod
+    def validate_create_artist(data):
+        isValid = True
+        if data['artist_name'] == "":
+            isValid = False
+            flash("Please provide Artist Name", "error_create_artist")
+        return isValid
