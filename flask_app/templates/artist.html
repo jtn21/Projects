@@ -7,9 +7,15 @@
     <title>Add a new artist</title>
 </head>
 <body>
-    <form action="/">
-
+    <form action="/artist/new" method="POST">
+        <div>
+            <label for="artist_name">Artist Name</label>
+            <input type="text" id="artist_name" name="artist_name" />
+        </div>
+        <div>
+            <button type="create">Submit</button>
+        </div>
     </form>
-    
+    <a href="/dashboard">back</a>
 </body>
 </html>

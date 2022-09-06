@@ -12,8 +12,8 @@ class Artist:
     
     @classmethod
     def create_artist(cls, data):
-        query = "INSERT INTO artists(created_at, updated_at, artist_name )"
-        query += "VALUES( %(created_at)s, %(updated_at)s, %(artist_name)s );"
+        query = "INSERT INTO artists(artist_name )"
+        query += "VALUES( %(artist_name)s );"
 
         return connectToMySQL( DATABASE).query_db( query, data)
 
