@@ -63,13 +63,13 @@ def login_submit():
     else:
         if not bcrypt.check_password_hash(result.password, request.form['password']):
             flash( "Wrong login information.", "error_login")
-            return redirect('/')
+            return redirect('/login')
         else:
             session['email'] = result.email
             session[ 'first_name'] = result.first_name
             session[ 'last_name' ] = result.last_name
             session[ 'user_id' ] = result.id
-            return redirect('/dashboard')
+            return redirect("/dashboard")
 
 @app.route('/logout')
 def logout():
