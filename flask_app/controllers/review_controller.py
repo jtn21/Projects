@@ -37,3 +37,16 @@ def create_review():
 
         Review.create(data)
         return redirect("/dashboard")
+
+
+#get one review
+@app.route("/review/<int:id>")
+def get_review(id):
+    if User.validate_session():
+        data = {
+            'id' : id
+        }
+        review = Review.get_one(data)
+        return render_template("displayReview.html", review = review)
+    else: 
+        return redirect("/dashboard")
