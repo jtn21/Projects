@@ -50,3 +50,12 @@ def get_review(id):
         return render_template("displayReview.html", review = review)
     else: 
         return redirect("/dashboard")
+
+#delete review
+@app.route("/review/delete/<int:id>")
+def delete_review(id):
+    data = {
+        "id" : id
+    }
+    Review.delete_one(data)
+    return redirect("/dashboard")
