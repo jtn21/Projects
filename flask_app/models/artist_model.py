@@ -51,3 +51,10 @@ class Artist:
             return cls(result[0])
         else: 
             return None
+    
+    @classmethod
+    def delete_artist(cls,data):
+        query = "DELETE FROM artists "
+        query += "WHERE id = %(id)s;"
+
+        return connectToMySQL(DATABASE).query_db(query,data)

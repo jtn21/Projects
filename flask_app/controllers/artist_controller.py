@@ -40,4 +40,11 @@ def get_artist(id):
     else:
         return redirect("/dashboard")
 
-#
+#delete artist
+@app.route("/artist/delete/<int:id>")
+def delete_artist(id):
+    data = {
+        "id" : id
+    }
+    Artist.delete_artist(data)
+    return redirect("/dashboard")
