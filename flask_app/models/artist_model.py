@@ -38,3 +38,16 @@ class Artist:
             isValid = False
             flash("Please provide Artist Name", "error_create_artist")
         return isValid
+
+    @classmethod
+    def get_artist(cls, data):
+        query = "SELECT * "
+        query += "FROM artists "
+        query += "WHERE id = %(id)s;"
+
+        result = connectToMySQL(DATABASE).query_db(query,data)
+
+        if len(result) > 0:
+            return cls(result[0])
+        else: 
+            return None
