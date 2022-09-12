@@ -13,6 +13,7 @@
     <div>
         <a href= "/add/review"> Add a review</a>
         <a href= "/add/artist"> Add a new artist</a>
+        <a href = "" >HELLO</a>
         <a href = "/logout"> Logout</a>
     </div>
     <div>
@@ -20,12 +21,26 @@
             <tr>
                 <th>Review</th>
                 <th>Rating</th>
+                <th>Actions</th>
             </tr>
-            <tr> {% for review in reviews: %} </tr>
+            {%for review in reviews%} 
+            <tr> 
                 <td> {{review.review}} </td>
-                <td> {{review.rating}} </td>
-                <td> <h6>Actions</h6></td>
-                {% endfor %}
+                <td> {{review.num_stars}} </td>
+                <td> <p>edit and delete</p></td>
+            </tr>
+            {%endfor%}
+        </table>
+
+        <table>
+            <tr>
+                <th>Artist Name</th>
+            </tr>
+            {%for artist in artists%} 
+            <tr> 
+                <td> {{artist.artist_name}} </td>
+            </tr>
+            {%endfor%}
         </table>
     </div>
 </body>

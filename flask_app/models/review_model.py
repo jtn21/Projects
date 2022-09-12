@@ -15,8 +15,8 @@ class Review:
     
     @classmethod
     def create( cls, data ):
-        query = "INSERT INTO reviews (user_id, review, num_stars ) "
-        query += "VALUES ( %(user_id)s,  %(review)s, %(num_stars)s ) ;"
+        query = "INSERT INTO reviews (user_id, artist_id ,review, num_stars ) "
+        query += "VALUES ( %(user_id)s, %(artist_id)s,  %(review)s, %(num_stars)s ) ;"
 
         return connectToMySQL( DATABASE).query_db( query, data)
 

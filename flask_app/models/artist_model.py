@@ -18,7 +18,7 @@ class Artist:
         return connectToMySQL( DATABASE).query_db( query, data)
 
     @classmethod
-    def get_all_artists(cls, data):
+    def get_all_artists(cls):
         query = " SELECT * "
         query += " FROM artists;"
 

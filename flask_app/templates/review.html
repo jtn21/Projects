@@ -10,8 +10,10 @@
     <form action="/review/new" method="POST">
         <div>
             <label for="artist_name">Artist Name</label>
-            <select id="artists" name="artists">
-                <option value="{{artist_id}}"> {{artist_name}}</option>
+            <select id="artists" name="artist_id">
+                {%for artist in artists%}
+                <option value="{{artist.id}}"> {{artist.artist_name}}</option>
+                {%endfor%}
             </select>
         </div>
         <div>

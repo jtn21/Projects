@@ -13,6 +13,14 @@ def display_artist():
     else:
         return redirect("/login")
 
+# display all artists
+@app.route("/view/artists")
+def get_artists():
+    
+    artists = Artist.get_all_artists()
+    return render_template("dashboard.html", artists = artists)
+
+
 
 # create artist
 @app.route("/artist/new", methods = [ 'POST' ])
@@ -36,7 +44,7 @@ def get_artist(id):
             'id' : id
         }
         artist = Artist.get_artist(data)
-        return render_template("")
+        return render_template("displayArtist.html")
     else:
         return redirect("/dashboard")
 
@@ -48,3 +56,5 @@ def delete_artist(id):
     }
     Artist.delete_artist(data)
     return redirect("/dashboard")
+
+

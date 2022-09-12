@@ -2,6 +2,7 @@ from flask import session, request, render_template, redirect, flash
 from flask_app import app
 from flask_app.models.review_model import Review
 from flask_app.models.user_model import User
+from flask_app.models.artist_model import Artist
 
 
 
@@ -10,15 +11,18 @@ from flask_app.models.user_model import User
 def get_reviews():
     if User.validate_session():
         reviews = Review.get_all()
-        return render_template("dashboard.html", reviews = reviews)
+        artists = Artist.get_all_artists()
+        return render_template("dashboard.html", artists = artists, reviews = reviews)
     else:
         return redirect("/")
 
 # display review form
+# pass data for artist name here
 @app.route("/add/review")
 def display_review():
     if User.validate_session():
-        return render_template("review.html")
+        artists = Artist.get_all_artists()
+        return render_template("review.html", artists = artists)
     else:
         return redirect("/login")
 
