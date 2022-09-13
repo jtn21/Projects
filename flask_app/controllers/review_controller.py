@@ -55,6 +55,18 @@ def get_review(id):
     else: 
         return redirect("/dashboard")
 
+#edit one review
+@app.route("/review/edit/<int:id>")
+def edit_review(id):
+    if User.validate_session():
+        data = {
+            'id' : id
+        }
+        review = Review.get_one(data)
+        return render_template("displayEditReview.html", review = review) 
+    else:
+        return redirect("/")
+
 #delete review
 @app.route("/review/delete/<int:id>")
 def delete_review(id):
